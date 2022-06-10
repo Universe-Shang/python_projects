@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../static/h.css">
+</head>
+ <style>
+     #customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+input{
+                border: 1px solid #ccc;
+                padding: 7px 0px;
+                border-radius: 3px;
+                padding-left:5px;
+                -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+                box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+                -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+                -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                text-align:center;
+            }
+input:focus{
+                    border-color: #66afe9;
+                    outline: 0;
+                    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+                    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+            }
+</style>
+
+ </style>
+<body>
+  <div class="homepage" id="main">
+    <header class='homepage-header'>
+      <div class="left"><h3>房屋信息搜索引擎</h3></div>
+    </header>
+  </div>
+  <form action="" id="form" method="post" >
+            <p>房屋信息：<input type="text" placeholder="请输入房屋信息" name="info" id="info"></p>
+{#            <p>价格:<input  type="text" placeholder="请输入您的预算" name="price" id="price"></p>#}
+              <div style="text-align: center;margin-top: 30px;">
+                <input type="submit" class="btn btn-default btn-back" value="提交">
+            </div>
+  </form>
+   <table id="customers">
+   	<tr>
+		<th>简介</th>
+		<th>总价(万元)</th>
+		<th>面积(平方米)</th>
+		<th>单价(万元/平方米)</th>
+        <th>厅室</th>
+	</tr>
+       {{ product }}
+       {% for product in products %}
+           <tr>
+                <td>{{ product['name'] }}</td>
+                <td>{{ product['price']}}</td>
+                <td>{{ product['area']}}</td>
+                <td>{{ product['price_single'] }}</td>
+                <td>{{ product['space'] }}</td>
+           </tr>
+	</tr>
+           {% endfor %}
+{#       {% endif %}#}
+
+   </table>
+
+   </div>
+</body>
+</html>

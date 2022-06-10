@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../static/h.css">
+</head>
+<body>
+  <div class="homepage" id="main">
+    <header class='homepage-header'>
+      <div class="left"><h3>基于大数据的二手房价可视化分析预测系统</h3></div>
+      <div class="right">
+        <div class="tag" name="1">二手房整体分析</div>
+        <div class="tag" name="2">二手房基本信息分析</div>
+        <div class="tag" name="3" >房价影响因素分析</div>
+        <div class="tag" name="4" >二手房房价预测</div>
+      </div>
+    </header>
+    <div id="tabspage">
+      <section class='login'>
+        <div class="msg">
+          <h3>基于大数据的二手房价可视化分析系统</h3>
+          <p>
+            利用网络爬虫技术从安居客采集保定的最新二手房房价数据，实现整体质量分析，二手房基本信息分析和房屋属性可视化分析。可视化展示房价随面积、地理位置、
+            楼层等因素的影响关系。对未来区域小区房价和房价趋势进行预测分析
+          </p>
+        </div>
+        <div class="input">
+          <h3>登录</h3>
+          <form method="post">
+        <form method="post">
+            <label>用户名：</label><input type="text" name="username"><br>
+            <label>密码：</label><input type="password" name="password"><br>
+            <input type="submit" value="提交"><br>
+        </form>
+        {#    使用遍历获取闪现的消息#}
+        {% for message in get_flashed_messages() %}
+            {{ message }}
+        {% endfor %}
+          </form>
+        </div>
+      </section>
+      <div class="logo">
+        <img src="../static/bc.png" alt="">
+      </div>
+    </div>
+    <div id='homepage0' class="tb"><h1>保定市小区名称关键词抽取并词云分析</h1>
+      <hr></hr>
+      <img src='./bc.png' alt="" />
+      <h1>保定二手房房屋类型和产权年限分布直方图</h1>
+      <hr />
+      <img src='./bc.png' alt="" />
+    </div>
+    <div id='homepage1' class="tb"><h1>保定市不同地区二手房房源数与平均房价的分布情况</h1>
+      <img src='./bc.png' alt="" />
+    </div>
+    <div id='homepage2' class="tb">
+      <div class="title">
+        <h1>房价因素影响分析</h1>
+        <hr/>
+      </div>
+      <div class="factors">
+        <span class="f">建造年代</span>
+        <span class="f">建筑面积</span>
+        <span class="f">房屋户型_室数</span>
+        <span class="f">房屋户型_厅数</span>
+        <span class="f">房屋户型_卫数</span>
+      </div>
+      <img class="fimg" src="./0.png" alt="">
+      <img class="fimg" src="./1.png" alt="">
+      <img class="fimg" src="./2.png" alt="">
+      <img class="fimg" src="./3.png" alt="">
+      <img class="fimg" src="./4.png" alt="">
+    </div>
+      <div id='homepage3' class="tb"><h1>二手房价预测</h1>
+        <img src='./bc.png' alt="" />
+      </div>
+  </div>
+</body>
+<script>
+  let tags = document.getElementsByClassName('tag');
+  let factors = document.getElementsByClassName('f')
+  const setImg = (i) => {
+    let imgs = document.getElementsByClassName('fimg')
+    for (let img of imgs) img.style.display = 'none'
+    imgs[i].style.display = 'block'
+  }
+  for (let i = 0; i < factors.length; ++i) {
+    factors[i].addEventListener('click', () => {
+      setImg(i)
+    })
+  }
+  const setTab = (i) => {
+    let content = document.getElementById('tabspage')
+    if (content) content.remove()
+    let pages = document.getElementsByClassName('tb');
+    for (let page of pages) {
+      page.style.display = 'none'
+    }
+    let tc = document.getElementById(`homepage${i}`)
+    tc.style.display = 'block'
+  }
+  for (let i = 0; i < tags.length; ++i) {
+    tags[i].addEventListener('click', () => {
+      setTab(i)
+    })
+  }
+</script>
+</html>

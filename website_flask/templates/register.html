@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <style>
+        html{
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            background: url(../static/0.png) no-repeat 0px 0px;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            -moz-background-size: 100% 100%;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            
+        }
+        input{
+            border:none; border-bottom:1px solid rgb(10, 10, 10);
+            width: 300px;
+        }
+        p{
+            text-align: center;
+            color: rgb(116, 113, 113);
+        }
+        .register{
+            margin-top: 50px;
+            width: 600px;
+            /*display: flex;*/
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 600px;
+            background-color: white;
+            box-shadow: 7px 7px 17px rgba(52, 56, 66, 0.5);
+        }
+        .d{
+            margin-top: 50px;
+            width: 300px;
+            /*display: flex;*/
+            justify-content: center;
+            align-items: center;
+            height: 600px;
+            background-color: rgb(167, 150, 150);
+            box-shadow: 7px 7px 17px rgba(52, 56, 66, 0.5);
+        }
+        .register_button {
+            border-color: cornsilk;
+            background-color: rgba(243, 202, 20, 0.7);
+            color: aliceblue;
+            border-style: hidden;
+            border-radius: 15px;
+            width: 190px;
+            height: 31px;
+            font-size: 16px;
+        }
+        .login_button{
+            
+            border: 20px solid white;
+            border-radius: 50%;
+           
+            color: rgb(167, 150, 150);;
+            border-style: hidden;
+            border-radius: 15px;
+            width: 100px;
+            height: 31px;
+            font-size: 16px;
+            
+        }
+        .title{
+            color: white;
+            text-align: center;
+        }         
+    </style>
+    <style type="text/css">
+        input::-ms-input-placeholder{text-align: center;}
+        input::-webkit-input-placeholder{text-align: center;}
+    </style>
+</head>
+ 
+<body>
+        <div class="register">
+            <form action="" id="form" method="post">
+            <h3>立即注册</h3>
+            <p >用户名</p>
+            <p><input type="text" placeholder="请输入用户名" id="username" name="username"></p>
+            <p >密码</p>
+            <p><input type="password" placeholder="密码长度至少为6位" id="password1" name="password1"></p>
+            <p >确认密码</p>
+            <p><input type="password" placeholder="两次密码需一致" id="password2" name="password2"></p>
+            <p><input type="submit" class="register_button"  name="register" value="注册"></input></p>
+{#            <p><button class="register_button" onclick="" name="register" onclick="register_click()">注册</button></p>#}
+            </form>
+            {#    使用遍历获取闪现的消息#}
+    {% for message in get_flashed_messages() %}
+        {{ message }}
+
+    {% endfor %}
+        </div>
+        <div class="d">
+            <br><br>
+            <h3 class="title">已有账号？</h3>
+            <p style="color: white;">已有账号就登录吧，好久不见！</p>
+            <br><br><br><br><br><br><br><br><br><br><br><br>
+            <p><button class="login_button" onclick="login_click()">登录</button></p>
+        </div>
+        <script>
+            //登录函数
+            function login_click(){
+                window.location.href="http://127.0.0.1:5000";
+            }
+        </script>
+        
+</body>
+</html>
